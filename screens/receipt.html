@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>UberX × SpaceX — Receipt</title>
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body class="receipt-page"><div class="device">
+<main class="receipt-screen">
+  <header class="screen-header">
+    <a href="payment-methods.html" class="btn-back" aria-label="Volver">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="screen-header__title">Receipt</h1>
+    <div class="screen-header__spacer" aria-hidden="true"></div>
+  </header>
+
+  <div class="receipt__scroll">
+    <div class="receipt-card">
+      <div class="receipt-amount">
+        <div class="receipt-amount__value">$859.50</div>
+        <p class="receipt-amount__name">Space Ride — Crew Dragon</p>
+        <p class="receipt-amount__date">15th Oct 2024 · 08:15 AM</p>
+      </div>
+
+      <hr class="receipt-sep">
+
+      <section>
+        <p class="receipt-section__label">Flight Details</p>
+        <div class="route">
+          <div class="route__end">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" style="margin-bottom:4px"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2l-1.5 1.5 7.08 3.54-2.76 2.76-1.6-1.18L5 13.5l4.5 4.5 1.5-1.5-1.18-1.6 2.76-2.76 3.54 7.08z"/></svg>
+            <div class="route__code">JFK</div>
+            <div class="route__time">10:30 AM</div>
+          </div>
+          <div class="route__mid">
+            <div class="route__line"></div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <div class="route__end">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" style="margin-bottom:4px;margin-left:auto;display:block"><path d="M2.5 19h19v2h-19zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.43-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 2.59 4.49 16.7-4.47c.81-.22 1.28-1.05 1.07-1.81z"/></svg>
+            <div class="route__code route__code--r">LAX</div>
+            <div class="route__time route__time--r">01:45 PM</div>
+          </div>
+        </div>
+
+        <div class="r-row"><span class="r-row__label">Flight Number</span><span class="r-row__val">AN123</span></div>
+        <div class="r-row"><span class="r-row__label">Seat</span><span class="r-row__val">24A</span></div>
+        <hr class="receipt-sep" style="margin:var(--s3) 0">
+        <div class="r-row"><span class="r-row__label">Fare</span><span class="r-row__val">$780.00</span></div>
+        <div class="r-row"><span class="r-row__label">Taxes &amp; Fees</span><span class="r-row__val">$79.50</span></div>
+        <div class="r-row r-row--total"><span class="r-row__label">Total</span><span class="r-row__val">$859.50</span></div>
+        <hr class="receipt-sep" style="margin:var(--s3) 0">
+
+        <div class="receipt-meta">
+          <div class="meta-row">
+            <span class="meta-row__label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Payment Method
+            </span>
+            <span class="meta-row__val">Amex **** 5678</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row__label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              Category
+            </span>
+            <span class="badge-travel">Travel</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="receipt-footer" role="toolbar">
+    <button class="footer-btn" aria-label="Compartir">
+      <div class="footer-btn__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0532a" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+      Share
+    </button>
+    <button class="footer-btn" aria-label="Descargar">
+      <div class="footer-btn__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0532a" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+      Download
+    </button>
+    <button class="footer-btn" aria-label="Categorizar">
+      <div class="footer-btn__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0532a" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      Categorize
+    </button>
+  </div>
+</main>
+</div></body></html>
