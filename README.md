@@ -129,10 +129,8 @@ python3 -m http.server 8080
 
 ## 📐 Convenciones de código
 
-- **Git:** [Conventional Commits](https://www.conventionalcommits.org/)
 - **CSS:** BEM para componentes, tokens globales en `:root`
 - **HTML:** Semántico con atributos ARIA (`aria-label`, `aria-hidden`, `role`)
-- **Sin frameworks:** Vanilla HTML5 + CSS3, JS inline mínimo solo donde necesario
 
 ### Ejemplos de commits
 ```
@@ -152,7 +150,3 @@ Prototipo de concepto — UberX × SpaceX Space Rides
 Año ficticio: 2053
 
 ---
-
-## 📄 Licencia
-
-Proyecto de demostración / portafolio. No afiliado con Uber ni SpaceX.
