@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>UberX × SpaceX — Launching</title>
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <div class="device">
+    <main class="splash">
+      <div class="splash__logo">
+        UBER<span class="splash__brand">X</span>
+      </div>
+      
+      <div class="splash__loader" aria-hidden="true"></div>
+      
+      <p class="splash__status">Initializing engines...</p>
+
+      <script>
+        setTimeout(() => {
+          window.location.replace('../index.html');
+        }, 2000); // 2 segundos para apreciar la animación
+      </script>
+      
+      <noscript>
+        <a href="../index.html" class="btn-primary" style="margin-top:20px">Enter System</a>
+      </noscript>
+    </main>
+  </div>
+</body>
+</html>
