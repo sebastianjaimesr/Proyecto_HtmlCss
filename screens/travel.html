@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>UberX × SpaceX — Travel</title>
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body class="travel-page"><div class="device">
+  <input type="radio" name="ship" id="ship-1" checked>
+  <input type="radio" name="ship" id="ship-2">
+  <input type="radio" name="ship" id="ship-3">
+  <input type="checkbox" id="sheet-toggle">
+
+  <div class="travel">
+    <!-- MAP -->
+    <div class="space-map">
+      <div class="space-map__back">
+        <a href="home.html" class="btn-back" aria-label="Volver">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </a>
+      </div>
+
+      <!-- Ruta punteada SVG (solo la línea, sin planetas) -->
+      <svg class="space-map__svg" viewBox="0 0 430 310" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 80 228 Q 210 62 348 76"
+          stroke="rgba(255,255,255,.38)" stroke-width="1.5"
+          stroke-dasharray="8 7" fill="none" stroke-linecap="round"/>
+        <!-- Nave -->
+        <text x="212" y="148" font-size="18" text-anchor="middle" dominant-baseline="middle"
+          style="animation:float 3s ease-in-out infinite">🚀</text>
+      </svg>
+
+      <!-- Tierra — imagen real -->
+      <a href="booking.html" aria-label="Ir a Earth">
+        <img
+          class="planet-img-earth"
+          src="https://www.photolari.com/wp-content/uploads/2023/05/imagen-esa-tierra-resolucion.jpg"
+          alt="Earth"
+        />
+      </a>
+      <a href="booking.html" class="planet-chip planet-chip--earth" aria-label="Earth">
+        Earth
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <!-- Marte — imagen real -->
+      <a href="booking.html" aria-label="Ir a Mars">
+        <img
+          class="planet-img-mars"
+          src="https://oasisnerd.com/wp-content/uploads/2024/10/Marte.png"
+          alt="Mars"
+        />
+      </a>
+      <a href="booking.html" class="planet-chip planet-chip--mars" aria-label="Mars">
+        Mars
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+
+    <!-- BOTTOM SHEET -->
+    <div class="sheet">
+      <label for="sheet-toggle" class="sheet__handle-wrap">
+        <div class="sheet__handle"></div>
+      </label>
+      <p class="sheet__warning">Fares are higher due to space debris</p>
+
+      <!-- LISTA -->
+      <div class="sheet-list">
+        <label class="ship-label ship-label--d" for="ship-1">
+          <div class="ship-label__icon">🛸</div>
+          <div class="ship-label__info">
+            <p class="ship-label__name">Crew Dragon</p>
+            <p class="ship-label__date">Next Launch: 12/03/53 · 19:30</p>
+          </div>
+          <div class="ship-label__price">48.5 <div class="price-icon">◈</div></div>
+          <div class="ship-label__radio">
+            <svg class="ship-label__radio-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </label>
+
+        <label class="ship-label" for="ship-2">
+          <div class="ship-label__icon">🚀</div>
+          <div class="ship-label__info">
+            <p class="ship-label__name">Starliner</p>
+            <p class="ship-label__date">Next Launch: 24/03/53 · 12:30</p>
+          </div>
+          <div class="ship-label__price">51.2 <div class="price-icon">◈</div></div>
+          <div class="ship-label__radio">
+            <svg class="ship-label__radio-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </label>
+
+        <label class="ship-label" for="ship-3">
+          <div class="ship-label__icon">✈️</div>
+          <div class="ship-label__info">
+            <p class="ship-label__name">Dream Chaser</p>
+            <p class="ship-label__date">Next Launch: 24/03/53 · 12:30</p>
+          </div>
+          <div class="ship-label__price">102.5 <div class="price-icon">◈</div></div>
+          <div class="ship-label__radio">
+            <svg class="ship-label__radio-check" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </label>
+
+        <div class="sheet-actions">
+          <a href="payment-methods.html" class="wallet-btn">
+            <div class="wallet-btn__l"><span style="font-size:1.1rem">◈</span> Connect Wallet</div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+          <div class="swipe-wrap" id="sw1">
+            <div class="swipe-track" id="st1"></div>
+            <div class="swipe-thumb" id="sth1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <input type="range" min="0" max="100" value="0" aria-label="Desliza para confirmar"
+              oninput="(function(el){var v=el.value,w=el.parentElement.offsetWidth,max=w-56,pos=(v/100)*max+5;document.getElementById('sth1').style.left=pos+'px';document.getElementById('st1').style.width=(pos+46)+'px';if(v>=98){document.getElementById('sth1').style.background='linear-gradient(135deg,#16a34a,#4ade80)';document.querySelector('#sw1 .swipe-label').style.opacity='0';}})(this)"
+              onchange="if(this.value>=98){setTimeout(()=>{window.location='payment-methods.html'},500);}">
+            <span class="swipe-label">Swipe To Confirm Booking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DETALLE -->
+      <div class="sheet-detail">
+        <label for="sheet-toggle"><div class="detail-img">🛸</div></label>
+        <div class="detail-body">
+          <div class="detail-row">
+            <span class="detail-name">Crew Dragon</span>
+            <div class="detail-price">48.5 <div class="price-icon">◈</div></div>
+          </div>
+          <p class="detail-meta">NEXT LAUNCH · 12/03/53 · 19:30</p>
+          <p class="detail-meta">JOURNEY DURATION · 18 DAYS, 13 HOURS</p>
+        </div>
+        <div class="sheet-actions">
+          <a href="payment-methods.html" class="wallet-btn">
+            <div class="wallet-btn__l"><span style="font-size:1.1rem">◈</span> Connect Wallet</div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+          <div class="swipe-wrap" id="sw2">
+            <div class="swipe-track" id="st2"></div>
+            <div class="swipe-thumb" id="sth2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <input type="range" min="0" max="100" value="0" aria-label="Desliza para confirmar"
+              oninput="(function(el){var v=el.value,w=el.parentElement.offsetWidth,max=w-56,pos=(v/100)*max+5;document.getElementById('sth2').style.left=pos+'px';document.getElementById('st2').style.width=(pos+46)+'px';if(v>=98){document.getElementById('sth2').style.background='linear-gradient(135deg,#16a34a,#4ade80)';}})(this)"
+              onchange="if(this.value>=98){setTimeout(()=>{window.location='payment-methods.html'},500);}">
+            <span class="swipe-label">Swipe To Confirm Booking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></body></html>
