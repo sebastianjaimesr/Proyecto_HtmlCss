@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>UberX × SpaceX</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="splash-page">
+<main class="splash">
+  <h1 class="visually-hidden">UberX × SpaceX — Space Rides</h1>
+
+  <div class="splash__stars-sm" aria-hidden="true"></div>
+  <div class="splash__stars-lg" aria-hidden="true"></div>
+  <div class="splash__nebula-l" aria-hidden="true"></div>
+  <div class="splash__nebula-r" aria-hidden="true"></div>
+
+  <!-- SVG orbital -->
+  <svg class="splash__svg" viewBox="0 0 480 820" fill="none" aria-hidden="true">
+    <path d="M -70 890 Q 200 430 550 -70"
+      stroke="url(#og)" stroke-width="1.5" stroke-linecap="round"
+      stroke-dasharray="1300" stroke-dashoffset="1300"
+      style="animation:orbitDraw 2.8s .4s var(--ease-out) forwards;"/>
+    <path d="M -70 890 Q 200 430 550 -70"
+      stroke="white" stroke-width=".4" stroke-linecap="round" opacity=".4"
+      stroke-dasharray="90 1210" stroke-dashoffset="1300"
+      style="animation:orbitDraw 2.8s .4s var(--ease-out) forwards;"/>
+    <circle cx="212" cy="418" r="2.5" fill="white" opacity=".85"
+      style="animation:fadeIn 1s 2.3s ease both,float 4s 3s ease-in-out infinite;"/>
+    <circle cx="212" cy="418" r="9" fill="white" opacity=".10"
+      style="animation:fadeIn 1s 2.3s ease both,float 4s 3s ease-in-out infinite;"/>
+    <defs>
+      <linearGradient id="og" x1="-70" y1="890" x2="550" y2="-70" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stop-color="transparent"/>
+        <stop offset="22%"  stop-color="rgba(100,80,240,.18)"/>
+        <stop offset="56%"  stop-color="rgba(160,140,255,.52)"/>
+        <stop offset="83%"  stop-color="rgba(255,255,255,.90)"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Planeta Saturno decorativo -->
+  <div class="splash__planet" aria-hidden="true">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="36" cy="40" rx="34" ry="8" fill="none" stroke="rgba(200,180,120,.18)" stroke-width="7" transform="rotate(-12,36,40)"/>
+      <circle cx="36" cy="36" r="16" fill="url(#saturnG)"/>
+      <ellipse cx="40" cy="40" rx="12" ry="10" fill="rgba(0,0,0,.3)"/>
+      <ellipse cx="36" cy="40" rx="34" ry="8" fill="none" stroke="rgba(210,190,130,.22)" stroke-width="5" stroke-dasharray="54 68" stroke-dashoffset="20" transform="rotate(-12,36,40)"/>
+      <ellipse cx="30" cy="30" rx="6" ry="4" fill="rgba(255,255,255,.12)" transform="rotate(-15,30,30)"/>
+      <defs>
+        <radialGradient id="saturnG" cx="35%" cy="32%">
+          <stop offset="0%"   stop-color="#e8d08a"/>
+          <stop offset="50%"  stop-color="#c4a44a"/>
+          <stop offset="100%" stop-color="#7a5820"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Planeta pequeño -->
+  <div class="splash__planet-sm" aria-hidden="true">
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="14" fill="url(#pSmG)" filter="url(#ps)"/>
+      <ellipse cx="14" cy="14" rx="5" ry="3" fill="rgba(255,255,255,.12)" transform="rotate(-20,14,14)"/>
+      <defs>
+        <radialGradient id="pSmG" cx="35%" cy="30%">
+          <stop offset="0%"   stop-color="#7ecbf5"/>
+          <stop offset="55%"  stop-color="#2475c4"/>
+          <stop offset="100%" stop-color="#0d3878"/>
+        </radialGradient>
+        <filter id="ps"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Logo + chip + barra -->
+  <div class="splash__center">
+    <p class="splash__logo">UBERX</p>
+    <div class="splash__chip">
+      <span class="splash__dot"></span>
+      SPACE RIDES · EST. 2053
+    </div>
+    <div class="splash__bar-wrap">
+      <div class="splash__bar"><div class="splash__bar-fill"></div></div>
+    </div>
+  </div>
+
+  <a href="screens/home.html" class="splash__enter">Board Now ▶</a>
+</main>
+</body>
+</html>
