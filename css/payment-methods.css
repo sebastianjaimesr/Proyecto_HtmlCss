@@ -1,0 +1,113 @@
+/* ═══════════════════════════════════════════
+   PAYMENT METHODS SCREEN — estilos exclusivos de payment-methods.html
+═══════════════════════════════════════════ */
+
+/* Contenedor principal: columna que ocupa toda la pantalla */
+.payments{display:flex;flex-direction:column;min-height:100dvh}
+/* Área de scroll: padding inferior para no tapar el botón sticky */
+.payments__scroll{flex:1;overflow-y:auto;padding-bottom:90px}
+/* Contenedor del buscador con padding lateral */
+.payments__search{padding:var(--s4) var(--s6)}
+
+/* ── Tarjetas de métodos de pago ────────────
+   Cada tarjeta es un enlace con fondo oscuro,
+   borde sutil y efecto de vidrio en la parte superior.
+─────────────────────────────────────────── */
+.payment-card{
+  display:flex;align-items:center;gap:var(--s4);
+  padding:var(--s4) var(--s5);
+  background:var(--bg-card);border:1px solid var(--glass-border);
+  border-radius:var(--r-xl);text-decoration:none;color:var(--text-0);
+  transition:background var(--dur),border-color var(--dur),transform var(--dur) var(--ease-spring),box-shadow var(--dur);
+  position:relative;overflow:hidden;
+}
+/* Línea de brillo en la parte superior de la tarjeta (efecto de luz) */
+.payment-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+}
+/* Al hover: sube 2px, borde más brillante y sombra */
+.payment-card:hover{
+  background:var(--bg-elevated);border-color:var(--glass-border-bright);
+  transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.4);
+}
+
+/* Logo/ícono de la tarjeta: cuadrado redondeado */
+.payment-card__logo{
+  width:44px;height:44px;border-radius:var(--r-md);background:var(--bg-elevated);
+  border:1px solid var(--glass-border);display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;flex-shrink:0;
+}
+/* Bloque de información: número y fecha de expiración */
+.payment-card__info{flex:1;min-width:0}
+/* Número enmascarado con posible badge a la derecha */
+.payment-card__number{
+  font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:700;
+  display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+}
+/* Fecha de expiración o email: gris pequeño */
+.payment-card__expiry{font-size:var(--fz-xs);color:var(--text-2);margin-top:4px;font-family:var(--font-mono)}
+/* Contenedor de botones de acción (editar, eliminar, kebab) */
+.payment-card__actions{display:flex;align-items:center;gap:var(--s2);flex-shrink:0}
+
+/* ── Íconos de acción ───────────────────────
+   Botones cuadrados pequeños para editar o eliminar.
+─────────────────────────────────────────── */
+.action-icon{
+  width:32px;height:32px;border-radius:var(--r-sm);background:var(--glass);
+  border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;
+  color:var(--text-2);cursor:pointer;transition:all var(--dur);
+}
+.action-icon:hover{background:var(--bg-elevated);color:var(--text-0)}
+/* Variante de eliminar: se vuelve rojo al hover */
+.action-icon--del:hover{border-color:var(--danger);color:var(--danger)}
+
+/* Menú kebab (tres puntos): tres círculos apilados verticalmente */
+.kebab{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;width:32px;height:32px;cursor:pointer;color:var(--text-2);
+}
+.kebab span{width:4px;height:4px;border-radius:50%;background:currentColor;display:block}
+
+/* Lista de tarjetas: columna con espacio entre cada ítem */
+.list-wrap{padding:0 var(--s6);display:flex;flex-direction:column;gap:var(--s3)}
+
+/* ── Botón sticky para agregar método ───────
+   Fijo en la parte inferior con gradiente de desvanecimiento.
+─────────────────────────────────────────── */
+.cta-fixed{
+  position:sticky;bottom:0;padding:var(--s5) var(--s6);
+  background:linear-gradient(to top,var(--bg-deep) 60%,transparent);
+}
+/* Botón con borde punteado morado: indica que es para agregar algo nuevo */
+.btn-add{
+  width:100%;padding:var(--s4);background:var(--bg-card);
+  border:1px dashed rgba(124,109,250,.3);border-radius:var(--r-lg);
+  color:var(--text-1);font-family:var(--font-body);font-size:var(--fz-md);font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:var(--s2);
+  transition:background var(--dur),border-color var(--dur),color var(--dur);
+}
+/* Al hover: borde morado sólido y texto más brillante */
+.btn-add:hover{background:var(--bg-elevated);border-color:var(--accent);color:var(--text-0)}
+
+/* ── Responsive ─────────────────────────────
+   En móvil pequeño reduce el padding lateral.
+─────────────────────────────────────────── */
+@media(max-width:480px){
+  .list-wrap{padding:0 var(--s5)}
+  .payment-card{padding:var(--s4)}
+}
+
+/* En tablet/desktop: centra el device con fondo oscuro */
+@media(min-width:768px){
+  body.payment-page{
+    background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(124,109,250,.07) 0%,transparent 60%),#000;
+    display:flex;justify-content:center;align-items:center;min-height:100dvh;padding:var(--s9) 0;
+  }
+  body.payment-page .device{
+    border-radius:48px;min-height:820px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.07),0 48px 120px rgba(0,0,0,.9);
+  }
+}
+/* En pantallas muy anchas: fija el ancho del device */
+@media(min-width:1280px){body.payment-page .device{min-width:420px;max-width:480px}}

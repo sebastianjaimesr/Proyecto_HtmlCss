@@ -1,37 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Codificación de caracteres -->
+  <meta charset="UTF-8">
+  <!-- Adaptación a pantallas móviles -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>UberX × SpaceX — Booking</title>
+  <!-- Estilos globales compartidos -->
   <link rel="stylesheet" href="../css/app.css">
+  <!-- Estilos específicos de la pantalla de reserva -->
+  <link rel="stylesheet" href="../css/booking.css">
 </head>
-<body class="booking-page"><div class="device">
+<body class="booking-page">
+
+<!-- Contenedor que simula la carcasa del teléfono -->
+<div class="device">
 <main class="booking">
+
+  <!-- ── Encabezado de pantalla ─────────────
+       Botón de volver + título centrado + espaciador.
+       El espaciador tiene el mismo ancho que el botón
+       para que el título quede perfectamente centrado.
+  ─────────────────────────────────────────── -->
   <header class="screen-header">
-    <a href="home.html" class="btn-back" aria-label="Volver">
+    <!-- Botón de volver a home -->
+    <a href="home.html" class="btn-back" aria-label="Back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
     </a>
     <h1 class="screen-header__title">Booking</h1>
-    <div class="screen-header__spacer"></div>
+    <!-- Espaciador invisible para centrar el título -->
+    <div class="screen-header__spacer" aria-hidden="true"></div>
   </header>
 
+  <!-- Área con scroll: todo el contenido de la reserva -->
   <div class="booking__scroll">
-    <div class="trip-card">
-      <div class="trip-route">
-        <div class="trip-planet"><div class="trip-planet__emoji">🌍</div><div class="trip-planet__name">Earth</div></div>
-        <div class="trip-arrow">→</div>
-        <div class="trip-planet"><div class="trip-planet__emoji" style="animation-delay:.5s">🔴</div><div class="trip-planet__name">Mars</div></div>
-      </div>
-      <div class="trip-grid">
-        <div class="trip-stat"><div class="trip-stat__label">Ship</div><div class="trip-stat__value">Crew Dragon</div></div>
-        <div class="trip-stat"><div class="trip-stat__label">Duration</div><div class="trip-stat__value">18d 13h</div></div>
-        <div class="trip-stat"><div class="trip-stat__label">Launch</div><div class="trip-stat__value">12/03/53 19:30</div></div>
-        <div class="trip-stat"><div class="trip-stat__label">Price</div><div class="trip-stat__value trip-stat__value--accent">48.5 ◈</div></div>
-      </div>
-    </div>
 
+    <!-- ── Tarjeta del viaje ──────────────────
+         Muestra la ruta (Tierra → Marte) con emojis
+         y una cuadrícula de 4 datos del viaje.
+    ─────────────────────────────────────────── -->
+    <div class="trip-card">
+
+      <!-- Ruta visual: planeta origen → flecha → planeta destino -->
+      <div class="trip-route">
+        <!-- Planeta de origen: Tierra -->
+        <div class="trip-planet">
+          <div class="trip-planet__emoji">🌍</div>
+          <div class="trip-planet__name">Earth</div>
+        </div>
+        <!-- Flecha animada entre planetas -->
+        <div class="trip-arrow">→</div>
+        <!-- Planeta de destino: Marte (animación con delay de 0.5s) -->
+        <div class="trip-planet">
+          <div class="trip-planet__emoji" style="animation-delay:.5s">🔴</div>
+          <div class="trip-planet__name">Mars</div>
+        </div>
+      </div>
+
+      <!-- Cuadrícula 2x2 con los datos del viaje -->
+      <div class="trip-grid">
+        <!-- Dato: nombre de la nave -->
+        <div class="trip-stat">
+          <div class="trip-stat__label">Ship</div>
+          <div class="trip-stat__value">Crew Dragon</div>
+        </div>
+        <!-- Dato: duración del viaje -->
+        <div class="trip-stat">
+          <div class="trip-stat__label">Duration</div>
+          <div class="trip-stat__value">18d 13h</div>
+        </div>
+        <!-- Dato: fecha y hora de lanzamiento -->
+        <div class="trip-stat">
+          <div class="trip-stat__label">Launch</div>
+          <div class="trip-stat__value">12/03/53 · 19:30</div>
+        </div>
+        <!-- Dato: precio en cripto (color morado para destacarlo) -->
+        <div class="trip-stat">
+          <div class="trip-stat__label">Price</div>
+          <div class="trip-stat__value trip-stat__value--accent">48.5 ◈</div>
+        </div>
+      </div>
+
+    </div><!-- /.trip-card -->
+
+    <!-- ── Sección: Pasajero ──────────────────
+         Tarjeta con avatar de iniciales, nombre y asiento.
+    ─────────────────────────────────────────── -->
     <h2 class="section-title">Passenger</h2>
     <div class="passenger-card">
+      <!-- Avatar con las iniciales del pasajero -->
       <div class="pass-avatar">SJ</div>
       <div class="pass-info">
         <div class="pass-info__name">Sebastian Jaimes</div>
@@ -39,14 +96,50 @@
       </div>
     </div>
 
+    <!-- ── Sección: Extras / Add-ons ──────────
+         Lista de servicios adicionales con precio.
+         Cada ítem tiene ícono, nombre y precio en cripto.
+    ─────────────────────────────────────────── -->
     <h2 class="section-title">Add-ons</h2>
-    <div class="extra-item"><div class="extra-item__left"><span class="extra-item__icon">🧳</span><span class="extra-item__name">Space Luggage (50kg)</span></div><span class="extra-item__price">+2.5 ◈</span></div>
-    <div class="extra-item"><div class="extra-item__left"><span class="extra-item__icon">🍽️</span><span class="extra-item__name">Space Meal Package</span></div><span class="extra-item__price">+1.0 ◈</span></div>
-    <div class="extra-item"><div class="extra-item__left"><span class="extra-item__icon">🛡️</span><span class="extra-item__name">Travel Insurance</span></div><span class="extra-item__price">+3.0 ◈</span></div>
-  </div>
 
+    <!-- Extra: equipaje espacial -->
+    <div class="extra-item">
+      <div class="extra-item__left">
+        <span class="extra-item__icon">🧳</span>
+        <span class="extra-item__name">Space Luggage (50 kg)</span>
+      </div>
+      <span class="extra-item__price">+2.5 ◈</span>
+    </div>
+
+    <!-- Extra: paquete de comidas -->
+    <div class="extra-item">
+      <div class="extra-item__left">
+        <span class="extra-item__icon">🍽️</span>
+        <span class="extra-item__name">Space Meal Package</span>
+      </div>
+      <span class="extra-item__price">+1.0 ◈</span>
+    </div>
+
+    <!-- Extra: seguro de viaje -->
+    <div class="extra-item">
+      <div class="extra-item__left">
+        <span class="extra-item__icon">🛡️</span>
+        <span class="extra-item__name">Travel Insurance</span>
+      </div>
+      <span class="extra-item__price">+3.0 ◈</span>
+    </div>
+
+  </div><!-- /.booking__scroll -->
+
+  <!-- ── Botón de acción fijo en la parte inferior ──
+       Sticky: se queda visible aunque el usuario haga scroll.
+       Lleva a la pantalla de métodos de pago.
+  ─────────────────────────────────────────── -->
   <div class="booking__cta">
     <a href="payment-methods.html" class="btn-primary btn-primary--full">Proceed to Payment →</a>
   </div>
+
 </main>
-</div></body></html>
+</div><!-- /.device -->
+</body>
+</html>

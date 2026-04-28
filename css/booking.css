@@ -1,0 +1,157 @@
+/* ═══════════════════════════════════════════
+   BOOKING SCREEN — estilos exclusivos de booking.html
+═══════════════════════════════════════════ */
+
+/* Contenedor principal: columna que ocupa toda la pantalla */
+.booking{display:flex;flex-direction:column;min-height:100dvh}
+/* Área de scroll: padding inferior grande para no tapar el botón sticky */
+.booking__scroll{flex:1;overflow-y:auto;padding:var(--s4) var(--s6) 100px}
+
+/* ── Título de sección ──────────────────────
+   Etiqueta en mayúsculas pequeñas y gris para separar secciones.
+─────────────────────────────────────────── */
+.section-title{
+  font-family:var(--font-mono);font-size:var(--fz-2xs);font-weight:700;
+  color:var(--text-2);letter-spacing:.14em;text-transform:uppercase;
+  margin:var(--s6) 0 var(--s4);
+}
+.section-title:first-child{margin-top:0}
+
+/* ── Tarjeta del viaje ──────────────────────
+   Fondo oscuro con gradiente morado, borde sutil
+   y dos manchas de luz decorativas con ::before y ::after.
+─────────────────────────────────────────── */
+.trip-card{
+  background:linear-gradient(135deg,rgba(18,12,45,.95),rgba(12,8,30,.95));
+  border:1px solid rgba(124,109,250,.2);border-radius:var(--r-xl);
+  padding:var(--s6);overflow:hidden;position:relative;margin-bottom:var(--s6);
+}
+/* Mancha de luz morada en la esquina superior derecha */
+.trip-card::before{
+  content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;
+  border-radius:50%;background:radial-gradient(circle,rgba(124,109,250,.15) 0%,transparent 65%);
+  pointer-events:none;
+}
+/* Mancha de luz morada más oscura en la esquina inferior izquierda */
+.trip-card::after{
+  content:'';position:absolute;bottom:-30px;left:-30px;width:120px;height:120px;
+  border-radius:50%;background:radial-gradient(circle,rgba(100,60,220,.12) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+/* ── Ruta del viaje ─────────────────────────
+   Fila con planeta origen, flecha y planeta destino.
+─────────────────────────────────────────── */
+.trip-route{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
+  margin-bottom:var(--s6);
+}
+/* Cada planeta: columna con emoji arriba y nombre abajo */
+.trip-planet{display:flex;flex-direction:column;align-items:center;gap:var(--s2)}
+/* Emoji del planeta: grande con sombra de luz y animación de flotación */
+.trip-planet__emoji{
+  font-size:2.8rem;line-height:1;
+  filter:drop-shadow(0 0 12px rgba(124,109,250,.4));
+  animation:float 4s ease-in-out infinite;
+}
+/* Nombre del planeta: fuente mono en mayúsculas pequeñas */
+.trip-planet__name{
+  font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:700;
+  color:var(--text-1);letter-spacing:.08em;text-transform:uppercase;
+}
+/* Flecha entre planetas: pulsa con animación */
+.trip-arrow{
+  font-size:var(--fz-xl);color:rgba(160,140,255,.5);flex-shrink:0;
+  animation:pulse 3s ease-in-out infinite;
+}
+
+/* ── Cuadrícula de estadísticas del viaje ───
+   2 columnas con 4 datos: nave, duración, lanzamiento, precio.
+─────────────────────────────────────────── */
+.trip-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);
+  background:rgba(255,255,255,.03);border:1px solid var(--glass-border);
+  border-radius:var(--r-lg);padding:var(--s4);
+}
+/* Etiqueta del dato: gris pequeño en mayúsculas */
+.trip-stat__label{
+  font-family:var(--font-mono);font-size:var(--fz-2xs);color:var(--text-2);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;
+}
+/* Valor del dato: negrita y fuente mono */
+.trip-stat__value{font-weight:700;font-size:var(--fz-sm);font-family:var(--font-mono)}
+/* Variante del precio: morado claro y más grande */
+.trip-stat__value--accent{color:var(--accent-bright);font-size:var(--fz-md)}
+
+/* ── Tarjeta del pasajero ───────────────────
+   Fila con avatar de iniciales y datos del asiento.
+─────────────────────────────────────────── */
+.passenger-card{
+  display:flex;align-items:center;gap:var(--s4);
+  background:var(--bg-card);border:1px solid var(--glass-border);
+  border-radius:var(--r-xl);padding:var(--s4) var(--s5);
+  transition:border-color var(--dur);
+}
+.passenger-card:hover{border-color:var(--accent-dim)}
+/* Avatar circular con gradiente morado y sombra de luz */
+.pass-avatar{
+  width:44px;height:44px;border-radius:var(--r-full);
+  background:linear-gradient(135deg,var(--accent),var(--accent-bright));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:var(--fz-sm);font-weight:700;
+  color:#fff;flex-shrink:0;box-shadow:0 0 16px var(--accent-glow);
+}
+/* Nombre del pasajero: negrita */
+.pass-info__name{font-weight:700;font-size:var(--fz-sm)}
+/* Asiento y clase: fuente mono gris */
+.pass-info__seat{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--text-2);margin-top:2px}
+
+/* ── Ítems de extras / add-ons ──────────────
+   Fila con ícono + nombre a la izquierda y precio a la derecha.
+─────────────────────────────────────────── */
+.extra-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:var(--s4) var(--s5);background:var(--bg-card);
+  border:1px solid var(--glass-border);border-radius:var(--r-lg);
+  margin-bottom:var(--s3);
+  transition:border-color var(--dur),background var(--dur);
+}
+/* Al hover: borde más brillante y fondo más elevado */
+.extra-item:hover{border-color:var(--glass-border-bright);background:var(--bg-elevated)}
+.extra-item:last-of-type{margin-bottom:0}
+/* Lado izquierdo: ícono + nombre en fila */
+.extra-item__left{display:flex;align-items:center;gap:var(--s3)}
+.extra-item__icon{font-size:1.3rem}
+.extra-item__name{font-weight:600;font-size:var(--fz-sm)}
+/* Precio en morado claro a la derecha */
+.extra-item__price{
+  font-family:var(--font-mono);font-weight:700;font-size:var(--fz-sm);
+  color:var(--accent-bright);flex-shrink:0;
+}
+
+/* ── Botón de acción sticky ─────────────────
+   Se queda fijo en la parte inferior aunque el usuario haga scroll.
+   El gradiente crea un efecto de desvanecimiento hacia arriba.
+─────────────────────────────────────────── */
+.booking__cta{
+  position:sticky;bottom:0;padding:var(--s4) var(--s6) calc(var(--s4) + env(safe-area-inset-bottom));
+  background:linear-gradient(to top,var(--bg-deep) 60%,transparent);
+}
+
+/* ── Responsive ─────────────────────────────
+   En móvil pequeño reduce el padding lateral.
+─────────────────────────────────────────── */
+@media(max-width:480px){
+  .booking__scroll{padding:var(--s4) var(--s5) 100px}
+  .booking__cta{padding:var(--s4) var(--s5) var(--s4)}
+  .trip-grid{gap:var(--s3)}
+}
+
+/* En tablet/desktop: centra el device con fondo oscuro */
+@media(min-width:768px){
+  body.booking-page{
+    background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(124,109,250,.07) 0%,transparent 60%),#000;
+    display:flex;justify-content:center;align-items:center;min-height:100dvh;padding:var(--s9) 0;
+  }
+  body.booking-page .device{border-radius:48px;min-height:820px;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 48px 120px rgba(0,0,0,.9)}
+}

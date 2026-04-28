@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════
+   RECEIPT SCREEN — tema claro con glassmorphism
+   Esta es la única pantalla con fondo claro.
+   Todos los colores están invertidos respecto al resto.
+═══════════════════════════════════════════ */
+
+/* Fondo del body: azul grisáceo claro */
+body.receipt-page{background:#c8d2e8}
+/* Fondo del device: gradiente blanco-azulado */
+body.receipt-page .device{background:linear-gradient(160deg,#e8edf8 0%,#d5dcee 100%)}
+
+/* Contenedor principal: columna que ocupa toda la pantalla */
+.receipt-screen{display:flex;flex-direction:column;min-height:100dvh}
+
+/* ── Encabezado invertido ───────────────────
+   En esta pantalla el header tiene colores claros
+   porque el fondo es claro (no oscuro como las demás).
+─────────────────────────────────────────── */
+/* Borde inferior más oscuro para contrastar con el fondo claro */
+.receipt-screen .screen-header{border-bottom:1px solid rgba(0,0,0,.07)}
+/* Título en naranja-rojo e itálica (estilo de recibo físico) */
+.receipt-screen .screen-header__title{color:#c0532a;font-style:italic}
+/* Botón de volver: fondo blanco semitransparente con borde oscuro */
+.receipt-screen .btn-back{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.1);color:#444}
+.receipt-screen .btn-back:hover{background:rgba(255,255,255,.9)}
+
+/* Área de scroll: padding inferior para no tapar los botones del footer */
+.receipt__scroll{flex:1;overflow-y:auto;padding:var(--s4) var(--s6) 110px}
+
+/* ── Tarjeta principal del recibo ───────────
+   Fondo blanco semitransparente con glassmorphism.
+   Sombra suave para dar sensación de papel elevado.
+─────────────────────────────────────────── */
+.receipt-card{
+  background:rgba(255,255,255,.75);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.95);border-radius:var(--r-xl);
+  padding:var(--s7) var(--s6);
+  box-shadow:0 8px 40px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04);
+}
+
+/* ── Monto principal ────────────────────────
+   Sección centrada con el total en grande,
+   nombre del servicio y fecha de la transacción.
+─────────────────────────────────────────── */
+.receipt-amount{text-align:center;margin-bottom:var(--s6)}
+/* Monto: fuente display muy grande, negro oscuro */
+.receipt-amount__value{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,12vw,3.8rem);
+  font-weight:900;letter-spacing:.02em;line-height:1;color:#1a1a2e;
+}
+/* Nombre del servicio: gris pequeño debajo del monto */
+.receipt-amount__name{font-size:var(--fz-sm);color:#666;margin-top:var(--s2)}
+/* Fecha y hora: fuente mono gris más claro */
+.receipt-amount__date{font-family:var(--font-mono);font-size:var(--fz-xs);color:#888;margin-top:4px}
+
+/* Separador punteado: simula el corte de un recibo físico */
+.receipt-sep{border:none;border-top:2px dashed rgba(0,0,0,.1);margin:var(--s5) 0}
+
+/* Etiqueta de sección: naranja pequeño en mayúsculas */
+.receipt-section__label{
+  font-family:var(--font-mono);font-size:var(--fz-2xs);font-weight:700;color:#c0532a;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:var(--s4);
+}
+
+/* ── Ruta del vuelo ─────────────────────────
+   Fila con aeropuerto origen, línea con flecha y aeropuerto destino.
+─────────────────────────────────────────── */
+.route{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s5)}
+/* Cada extremo ocupa el mismo espacio (flex:1) */
+.route__end{flex:1}
+/* Código del aeropuerto: fuente display grande y oscura */
+.route__code{font-family:var(--font-display);font-size:var(--fz-2xl);font-weight:800;color:#1a1a2e;line-height:1}
+/* Hora del vuelo: fuente mono gris */
+.route__time{font-family:var(--font-mono);font-size:var(--fz-xs);color:#888;margin-top:4px}
+/* Código y hora del destino: alineados a la derecha */
+.route__code--r,.route__time--r{text-align:right}
+/* Centro de la ruta: línea + flecha apiladas verticalmente */
+.route__mid{display:flex;flex-direction:column;align-items:center;gap:var(--s1);flex-shrink:0}
+/* Línea horizontal con gradiente que desaparece en los extremos */
+.route__line{width:50px;height:1px;background:linear-gradient(90deg,transparent,#aaa,transparent)}
+
+/* ── Filas de datos ─────────────────────────
+   Cada fila muestra una etiqueta a la izquierda y un valor a la derecha.
+   Separadas por un borde inferior sutil.
+─────────────────────────────────────────── */
+.r-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:var(--s2) 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:var(--fz-sm);
+}
+.r-row:last-child{border-bottom:none}
+/* Etiqueta: gris medio */
+.r-row__label{color:#555}
+/* Valor: negro oscuro y negrita con fuente mono */
+.r-row__val{font-weight:700;color:#1a1a2e;font-family:var(--font-mono)}
+/* Fila del total: etiqueta y valor en naranja y más grandes */
+.r-row--total .r-row__label{color:#c0532a;font-weight:800;font-size:var(--fz-md)}
+.r-row--total .r-row__val{color:#c0532a;font-size:var(--fz-md)}
+
+/* ── Metadatos del pago ─────────────────────
+   Dos filas: método de pago y categoría del gasto.
+─────────────────────────────────────────── */
+.receipt-meta{display:flex;flex-direction:column;gap:var(--s3);margin-top:var(--s4)}
+/* Cada fila de metadato: etiqueta con ícono a la izquierda, valor a la derecha */
+.meta-row{display:flex;align-items:center;justify-content:space-between;font-size:var(--fz-sm)}
+/* Etiqueta con ícono SVG inline */
+.meta-row__label{display:flex;align-items:center;gap:var(--s2);color:#555}
+.meta-row__val{font-weight:700;color:#1a1a2e}
+
+/* Badge azul de categoría "Travel" */
+.badge-travel{
+  background:rgba(99,163,255,.12);color:#4a9eff;border:1px solid rgba(99,163,255,.25);
+  border-radius:var(--r-full);padding:3px 12px;font-size:var(--fz-xs);font-weight:700;
+}
+
+/* ── Barra de acciones inferior ─────────────
+   Tres botones sticky: compartir, descargar, categorizar.
+   El gradiente crea un efecto de desvanecimiento hacia arriba.
+─────────────────────────────────────────── */
+.receipt-footer{
+  position:sticky;bottom:0;
+  background:linear-gradient(to top,rgba(213,220,238,1) 55%,transparent);
+  padding:var(--s5) var(--s6);display:flex;justify-content:space-around;
+}
+/* Cada botón: columna con ícono circular arriba y etiqueta abajo */
+.footer-btn{
+  display:flex;flex-direction:column;align-items:center;gap:var(--s2);
+  background:none;border:none;color:#555;font-size:var(--fz-xs);font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;cursor:pointer;
+  transition:color var(--dur),transform var(--dur) var(--ease-spring);
+}
+/* Al hover: texto naranja y sube 3px */
+.footer-btn:hover{color:#c0532a;transform:translateY(-3px)}
+/* Círculo del ícono: fondo blanco semitransparente */
+.footer-btn__icon{
+  width:46px;height:46px;border-radius:var(--r-full);
+  background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.09);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--dur),box-shadow var(--dur);
+}
+/* Al hover: fondo más blanco y sombra naranja sutil */
+.footer-btn:hover .footer-btn__icon{background:rgba(255,255,255,.95);box-shadow:0 4px 16px rgba(192,83,42,.15)}
+
+/* ── Responsive ─────────────────────────────
+   En móvil pequeño reduce el padding lateral.
+─────────────────────────────────────────── */
+@media(max-width:480px){
+  .receipt__scroll{padding:0 var(--s5) 110px}
+  .receipt-card{padding:var(--s6) var(--s5)}
+}
+
+/* En tablet/desktop: centra el device con sombra de papel */
+@media(min-width:768px){
+  body.receipt-page{display:flex;justify-content:center;align-items:center;min-height:100dvh;padding:var(--s9) 0}
+  body.receipt-page .device{
+    border-radius:48px;min-height:820px;
+    /* Sombra más clara que las otras pantallas porque el fondo es claro */
+    box-shadow:0 40px 100px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.4);
+  }
+}
+/* En pantallas muy anchas: fija el ancho del device */
+@media(min-width:1280px){body.receipt-page .device{min-width:420px;max-width:480px}}

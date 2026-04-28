@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Codificación de caracteres -->
   <meta charset="UTF-8">
+  <!-- Adaptación a pantallas móviles -->
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>UberX × SpaceX — Launching</title>
+  <!-- Estilos globales compartidos (necesita las variables CSS) -->
   <link rel="stylesheet" href="../css/app.css">
+  <!-- Estilos de la splash (fondo espacial) -->
+  <link rel="stylesheet" href="../css/splash.css">
+  <style>
+    /* Pantalla de carga: columna centrada con gap entre elementos */
+    .loader-screen{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      min-height:100dvh;gap:var(--s5);
+    }
+
+    /* Logo "UBERX" con gradiente de texto igual al de index.html */
+    .loader-logo{
+      font-family:var(--font-display);font-size:3rem;font-weight:900;letter-spacing:.15em;
+      color:transparent;
+      background:linear-gradient(155deg,#fff 0%,#a89bff 50%,rgba(90,65,200,.6) 100%);
+      -webkit-background-clip:text;background-clip:text;
+      filter:drop-shadow(0 0 30px rgba(120,100,255,.6));
+    }
+
+    /* Spinner circular: borde morado que gira infinitamente */
+    .loader-spinner{
+      width:36px;height:36px;border:2px solid rgba(124,109,250,.2);
+      border-top-color:var(--accent-bright);border-radius:50%;
+      animation:spin 0.9s linear infinite;
+    }
+
+    /* Keyframe del spinner: rotación completa de 0 a 360 grados */
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Texto de estado debajo del spinner */
+    .loader-status{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--text-2);letter-spacing:.1em}
+  </style>
 </head>
 <body>
-  <div class="device">
-    <main class="splash">
-      <div class="splash__logo">
-        UBER<span class="splash__brand">X</span>
-      </div>
-      
-      <div class="splash__loader" aria-hidden="true"></div>
-      
-      <p class="splash__status">Initializing engines...</p>
 
-      <script>
-        setTimeout(() => {
-          window.location.replace('../index.html');
-        }, 2000); // 2 segundos para apreciar la animación
-      </script>
-      
-      <noscript>
-        <a href="../index.html" class="btn-primary" style="margin-top:20px">Enter System</a>
-      </noscript>
-    </main>
-  </div>
+<!-- Contenedor del dispositivo con fondo negro puro -->
+<div class="device" style="background:var(--bg-void)">
+
+  <!-- Pantalla de carga centrada -->
+  <main class="loader-screen">
+
+    <!-- Logo de la app -->
+    <div class="loader-logo">UBERX</div>
+
+    <!-- Spinner animado que indica que está cargando -->
+    <div class="loader-spinner" aria-label="Loading"></div>
+
+    <!-- Texto de estado: simula que los motores se están iniciando -->
+    <p class="loader-status">Initializing engines...</p>
+
+    <!-- Script que redirige a index.html después de 2 segundos -->
+    <!-- Simula una pantalla de carga antes de la splash principal -->
+    <script>setTimeout(()=>window.location.replace('../index.html'),2000)</script>
+
+    <!-- Fallback si JavaScript está desactivado: muestra un botón manual -->
+    <noscript>
+      <a href="../index.html" class="btn-primary" style="margin-top:20px">Enter System</a>
+    </noscript>
+
+  </main>
+</div><!-- /.device -->
 </body>
 </html>

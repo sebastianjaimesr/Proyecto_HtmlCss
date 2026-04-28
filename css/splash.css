@@ -1,0 +1,224 @@
+/* ═══════════════════════════════════════════
+   SPLASH SCREEN — estilos exclusivos de index.html
+   Aquí van todos los estilos de la pantalla de bienvenida
+═══════════════════════════════════════════ */
+
+/* Fondo del body en la splash: capas de gradientes para simular el espacio profundo */
+body.splash-page{
+  background:
+    radial-gradient(ellipse 90% 70% at 55% 25%,#160b3e 0%,transparent 55%),
+    radial-gradient(ellipse 60% 55% at 15% 80%,#091030 0%,transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 50%,#0b0a1c 40%,#000 100%);
+}
+
+/* Contenedor principal de la splash: centra todo y ocupa toda la pantalla */
+.splash{
+  width:100%;max-width:480px;min-height:100dvh;position:relative;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  /* Mismo fondo que el body para que no haya corte de color */
+  background:
+    radial-gradient(ellipse 90% 70% at 55% 25%,#160b3e 0%,transparent 55%),
+    radial-gradient(ellipse 60% 55% at 15% 80%,#091030 0%,transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 50%,#0b0a1c 40%,#000 100%);
+}
+
+/* ── Estrellas ─────────────────────────────
+   Usamos background-image con múltiples radial-gradient
+   para pintar puntos blancos que simulan estrellas.
+   No son elementos HTML, son puro CSS.
+─────────────────────────────────────────── */
+
+/* Estrellas pequeñas (1px): muchas y distribuidas por toda la pantalla */
+.splash__stars-sm{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 4% 6%,rgba(255,255,255,.95) 0%,transparent 100%),
+    radial-gradient(1px 1px at 9% 52%,rgba(255,255,255,.70) 0%,transparent 100%),
+    radial-gradient(1px 1px at 14% 27%,rgba(255,255,255,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 19% 84%,rgba(255,255,255,.80) 0%,transparent 100%),
+    radial-gradient(1px 1px at 24% 13%,rgba(255,255,255,.60) 0%,transparent 100%),
+    radial-gradient(1px 1px at 29% 66%,rgba(255,255,255,.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 34% 93%,rgba(255,255,255,.75) 0%,transparent 100%),
+    radial-gradient(1px 1px at 39% 39%,rgba(255,255,255,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 44% 17%,rgba(255,255,255,.90) 0%,transparent 100%),
+    radial-gradient(1px 1px at 49% 74%,rgba(255,255,255,.60) 0%,transparent 100%),
+    radial-gradient(1px 1px at 54% 4%,rgba(255,255,255,.85) 0%,transparent 100%),
+    radial-gradient(1px 1px at 59% 47%,rgba(255,255,255,.50) 0%,transparent 100%),
+    radial-gradient(1px 1px at 64% 88%,rgba(255,255,255,.70) 0%,transparent 100%),
+    radial-gradient(1px 1px at 69% 22%,rgba(255,255,255,.95) 0%,transparent 100%),
+    radial-gradient(1px 1px at 74% 61%,rgba(255,255,255,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 79% 10%,rgba(255,255,255,.80) 0%,transparent 100%),
+    radial-gradient(1px 1px at 84% 44%,rgba(255,255,255,.65) 0%,transparent 100%),
+    radial-gradient(1px 1px at 89% 79%,rgba(255,255,255,.90) 0%,transparent 100%),
+    radial-gradient(1px 1px at 94% 33%,rgba(255,255,255,.70) 0%,transparent 100%),
+    radial-gradient(1px 1px at 98% 57%,rgba(255,255,255,.85) 0%,transparent 100%);
+  /* Animación de parpadeo: cambia la opacidad de todas las estrellas a la vez */
+  animation:twinkle 7s ease-in-out infinite alternate;
+}
+
+/* Estrellas grandes (2-3px): pocas, más brillantes, con tono azulado */
+.splash__stars-lg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 7% 18%,rgba(255,255,255,.95) 0%,transparent 100%),
+    radial-gradient(2px 2px at 22% 72%,rgba(200,210,255,.90) 0%,transparent 100%),
+    radial-gradient(2px 2px at 38% 8%,rgba(255,255,255,.85) 0%,transparent 100%),
+    radial-gradient(2px 2px at 53% 55%,rgba(200,210,255,.80) 0%,transparent 100%),
+    radial-gradient(2px 2px at 67% 31%,rgba(255,255,255,.90) 0%,transparent 100%),
+    radial-gradient(2px 2px at 82% 85%,rgba(200,210,255,.85) 0%,transparent 100%),
+    radial-gradient(2px 2px at 91% 20%,rgba(255,255,255,.95) 0%,transparent 100%),
+    radial-gradient(3px 3px at 16% 45%,rgba(255,255,255,.70) 0%,transparent 100%),
+    radial-gradient(3px 3px at 73% 68%,rgba(220,230,255,.65) 0%,transparent 100%),
+    radial-gradient(3px 3px at 46% 91%,rgba(255,255,255,.60) 0%,transparent 100%);
+  /* Parpadeo desfasado 1s respecto a las estrellas pequeñas */
+  animation:twinkle 5s 1s ease-in-out infinite alternate;
+}
+
+/* ── Nebulosas ──────────────────────────────
+   Son divs redondos con gradiente radial muy difuso.
+   Dan profundidad y color al fondo sin ser intrusivos.
+─────────────────────────────────────────── */
+
+/* Nebulosa izquierda: abajo a la izquierda, color morado oscuro */
+.splash__nebula-l{
+  position:absolute;width:380px;height:380px;bottom:-80px;left:-100px;
+  background:radial-gradient(circle,rgba(60,40,160,.18) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+  animation:nebula 12s ease-in-out infinite alternate;
+}
+
+/* Nebulosa derecha: arriba a la derecha, color morado más claro */
+.splash__nebula-r{
+  position:absolute;width:420px;height:420px;top:-100px;right:-120px;
+  background:radial-gradient(circle,rgba(100,60,220,.12) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+  /* alternate-reverse: se mueve en dirección opuesta a la nebulosa izquierda */
+  animation:nebula 9s 2s ease-in-out infinite alternate-reverse;
+}
+
+/* ── SVG orbital ────────────────────────────
+   El SVG ocupa toda la pantalla y contiene la línea
+   animada que simula la trayectoria de una nave.
+─────────────────────────────────────────── */
+.splash__svg{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+
+/* ── Planetas ───────────────────────────────
+   Cada planeta es un div que contiene un SVG inline.
+   Se posicionan de forma absoluta en esquinas distintas.
+─────────────────────────────────────────── */
+
+/* Saturno: esquina inferior izquierda, flota suavemente */
+.splash__planet{
+  position:absolute;bottom:18%;left:6%;z-index:1;pointer-events:none;
+  animation:float 6s ease-in-out infinite;
+}
+.splash__planet svg{width:72px;height:72px}
+
+/* Planeta azul pequeño: esquina superior derecha, flota más lento */
+.splash__planet-sm{
+  position:absolute;top:8%;right:8%;z-index:1;pointer-events:none;
+  animation:float 8s 1s ease-in-out infinite;
+}
+.splash__planet-sm svg{width:36px;height:36px}
+
+/* ── Contenido central ──────────────────────
+   Columna centrada que agrupa logo, chip y barra de carga.
+   z-index:2 para que quede por encima del SVG orbital.
+─────────────────────────────────────────── */
+.splash__center{
+  position:relative;z-index:2;display:flex;flex-direction:column;
+  align-items:center;gap:var(--s1);
+}
+
+/* Logo "UBERX": texto grande con gradiente y sombra de luz morada */
+.splash__logo{
+  font-family:var(--font-display);
+  font-size:clamp(4.5rem,22vw,6.5rem);
+  font-weight:900;letter-spacing:.12em;line-height:1;
+  color:transparent;
+  /* El gradiente se aplica al texto usando background-clip */
+  background:linear-gradient(155deg,#ffffff 0%,#d4ccff 25%,#8b7bff 55%,rgba(90,65,200,.5) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 45px rgba(120,100,255,.65)) drop-shadow(0 0 90px rgba(100,80,220,.3));
+  animation:fadeUp .9s .1s var(--ease-out) both;
+  user-select:none; /* evita que el usuario seleccione el texto */
+}
+
+/* Chip de texto: pastilla con borde sutil y efecto de vidrio */
+.splash__chip{
+  display:flex;align-items:center;gap:var(--s2);
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r-full);padding:var(--s2) var(--s5);
+  font-family:var(--font-mono);font-size:var(--fz-2xs);
+  color:rgba(255,255,255,.35);letter-spacing:.12em;
+  backdrop-filter:blur(12px);margin-top:var(--s4);
+  animation:fadeUp .9s .5s var(--ease-out) both;
+}
+
+/* Punto verde/morado pulsante dentro del chip */
+.splash__dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent-bright);
+  box-shadow:0 0 8px var(--accent-glow);animation:pulse 2.5s ease-in-out infinite;
+}
+
+/* ── Barra de progreso ──────────────────────
+   Simula que la app está cargando.
+   La barra interior crece de 0% a 100% con CSS.
+─────────────────────────────────────────── */
+
+/* Contenedor de la barra: centra y da espacio arriba */
+.splash__bar-wrap{
+  margin-top:var(--s5);display:flex;flex-direction:column;align-items:center;gap:6px;
+  animation:fadeUp .9s .7s var(--ease-out) both;
+}
+
+/* Pista de la barra: fondo oscuro semitransparente */
+.splash__bar{
+  width:100px;height:2px;background:rgba(255,255,255,.06);
+  border-radius:var(--r-full);overflow:hidden;
+}
+
+/* Relleno animado: va de 0% a 100% en 3.5 segundos */
+.splash__bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-bright),#fff);
+  border-radius:var(--r-full);width:0%;
+  animation:loadBar 3.5s 1s var(--ease-out) forwards;
+}
+
+/* ── Botón de entrada ───────────────────────
+   Enlace posicionado en la esquina inferior derecha.
+   Tiene efecto de vidrio y brilla al hacer hover.
+─────────────────────────────────────────── */
+.splash__enter{
+  position:absolute;bottom:var(--s9);right:var(--s6);z-index:3;
+  display:flex;align-items:center;gap:var(--s3);
+  padding:var(--s3) var(--s6);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--r-full);color:rgba(255,255,255,.70);
+  font-family:var(--font-display);font-size:var(--fz-sm);font-weight:600;letter-spacing:.1em;
+  backdrop-filter:blur(16px);text-decoration:none;
+  transition:color var(--dur),border-color var(--dur),background var(--dur),box-shadow var(--dur);
+  animation:fadeUp .9s 2.2s var(--ease-out) both;
+}
+/* Al pasar el mouse: borde morado y sombra de luz */
+.splash__enter:hover{
+  color:#fff;border-color:var(--accent);
+  background:var(--accent-dim);box-shadow:0 0 30px var(--accent-glow);
+}
+
+/* ── Responsive ─────────────────────────────
+   En tablet/desktop la splash se muestra como
+   una "cápsula" centrada con sombra de dispositivo.
+─────────────────────────────────────────── */
+@media(min-width:768px){
+  /* Centra la splash en la pantalla del escritorio */
+  body.splash-page{display:flex;justify-content:center;align-items:center;min-height:100dvh;padding:var(--s9) 0}
+  /* Le da forma de teléfono con bordes redondeados y sombra */
+  .splash{
+    border-radius:50px;min-height:820px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.07),0 0 0 8px rgba(255,255,255,.02),0 50px 120px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06);
+  }
+}
+/* En pantallas muy anchas fija el ancho mínimo y máximo */
+@media(min-width:1280px){.splash{min-width:420px;max-width:480px}}

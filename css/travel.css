@@ -1,0 +1,297 @@
+/* ═══════════════════════════════════════════
+   TRAVEL SCREEN — estilos exclusivos de travel.html
+═══════════════════════════════════════════ */
+
+/* ── Inputs ocultos para estado CSS-only ────
+   Estos inputs no se ven en pantalla pero su estado
+   (:checked) se usa como interruptor para cambiar
+   estilos de otros elementos con el selector ~
+─────────────────────────────────────────── */
+#sheet-toggle,#ship-1,#ship-2,#ship-3{display:none}
+
+/* Contenedor principal: columna que ocupa toda la pantalla */
+.travel{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column}
+
+/* ── Mapa espacial ──────────────────────────
+   Fondo con gradientes que simulan el espacio profundo.
+   Las estrellas se generan con ::before usando CSS puro.
+─────────────────────────────────────────── */
+.space-map{
+  position:relative;width:100%;flex:1;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%,rgba(60,40,160,.35) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%,rgba(8,20,60,.8) 0%,transparent 50%),
+    linear-gradient(180deg,#050510 0%,#0a0a20 60%,#050510 100%);
+  overflow:hidden;min-height:55vh;
+}
+
+/* Campo de estrellas del mapa: puntos blancos con CSS puro */
+.space-map::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 8% 15%,rgba(255,255,255,.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 25% 42%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 42% 8%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 60% 65%,rgba(200,210,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 75% 25%,rgba(255,255,255,.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 55%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 50% 35%,rgba(200,210,255,.6) 0%,transparent 100%),
+    radial-gradient(2px 2px at 35% 70%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(2px 2px at 90% 10%,rgba(255,255,255,.8) 0%,transparent 100%);
+  /* Parpadeo de estrellas usando el keyframe de app.css */
+  animation:twinkle 8s ease-in-out infinite alternate;
+}
+
+/* Botón de volver: posicionado en la esquina superior izquierda del mapa */
+.space-map__back{position:absolute;top:var(--s4);left:var(--s4);z-index:10}
+
+/* SVG de la ruta: cubre todo el mapa, sin capturar eventos del mouse */
+.space-map__svg{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;
+}
+
+/* ── Imágenes de planetas ───────────────────
+   Posicionadas de forma absoluta en el mapa.
+   Escalan al hacer hover con transición suave.
+─────────────────────────────────────────── */
+.planet-img-earth,.planet-img-mars{
+  position:absolute;border-radius:50%;object-fit:cover;z-index:3;
+  transition:transform var(--dur) var(--ease-spring),box-shadow var(--dur);
+}
+.planet-img-earth:hover,.planet-img-mars:hover{transform:scale(1.08)}
+
+/* Tierra: esquina inferior izquierda con sombra azul */
+.planet-img-earth{
+  width:70px;height:70px;bottom:80px;left:44px;
+  box-shadow:0 0 30px rgba(80,130,255,.5),0 0 60px rgba(40,80,200,.25);
+}
+/* Marte: esquina superior derecha con sombra naranja-roja */
+.planet-img-mars{
+  width:65px;height:65px;top:65px;right:44px;
+  box-shadow:0 0 30px rgba(220,80,40,.5),0 0 60px rgba(180,50,20,.25);
+}
+
+/* ── Chips de planetas ──────────────────────
+   Etiquetas con nombre del planeta y flecha.
+   Posicionadas junto a cada imagen de planeta.
+─────────────────────────────────────────── */
+.planet-chip{
+  position:absolute;z-index:4;
+  background:rgba(10,10,25,.85);backdrop-filter:blur(12px);
+  padding:7px 14px;border-radius:var(--r-full);color:#fff;
+  font-size:var(--fz-xs);font-weight:700;letter-spacing:.04em;
+  display:flex;align-items:center;gap:6px;
+  border:1px solid rgba(255,255,255,.12);
+  transition:border-color var(--dur),box-shadow var(--dur);
+}
+/* Al hover: borde morado y sombra de luz */
+.planet-chip:hover{border-color:var(--accent);box-shadow:0 0 16px var(--accent-glow)}
+/* Posición del chip de la Tierra */
+.planet-chip--earth{bottom:50px;left:122px}
+/* Posición del chip de Marte */
+.planet-chip--mars{top:108px;right:118px}
+
+/* ── Bottom Sheet ───────────────────────────
+   Panel inferior que muestra la lista de naves.
+   Tiene bordes redondeados arriba y fondo oscuro.
+─────────────────────────────────────────── */
+.sheet{
+  position:relative;bottom:0;left:0;right:0;
+  background:var(--bg-sheet);
+  border-top:1px solid var(--glass-border);
+  border-radius:var(--r-xl) var(--r-xl) 0 0;
+  z-index:20;
+}
+
+/* Handle (barra de arrastre): label del checkbox #sheet-toggle */
+.sheet__handle-wrap{display:block;cursor:pointer;padding:var(--s3) 0 0;user-select:none}
+/* Barra gris centrada que indica que se puede arrastrar */
+.sheet__handle{
+  width:40px;height:4px;background:rgba(255,255,255,.2);
+  border-radius:var(--r-full);margin:0 auto var(--s2);
+  transition:background var(--dur);
+}
+/* Al hover: la barra se vuelve más visible */
+.sheet__handle-wrap:hover .sheet__handle{background:rgba(255,255,255,.35)}
+
+/* Aviso de tarifa alta: texto centrado con ícono ⚠ generado por CSS */
+.sheet__warning{
+  text-align:center;font-size:var(--fz-xs);color:var(--text-2);
+  padding:0 var(--s6) var(--s3);border-bottom:1px solid var(--glass-border);
+}
+.sheet__warning::before{content:'⚠ ';opacity:.6}
+
+/* Lista de naves: visible por defecto */
+.sheet-list{display:flex;flex-direction:column}
+/* Vista de detalle: oculta por defecto */
+.sheet-detail{display:none}
+
+/* Cuando el checkbox está marcado: oculta la lista y muestra el detalle */
+#sheet-toggle:checked~.sheet .sheet-list{display:none}
+#sheet-toggle:checked~.sheet .sheet-detail{display:flex;flex-direction:column}
+
+/* ── Etiquetas de naves ─────────────────────
+   Cada label es una fila clickeable que actúa como
+   botón de radio para seleccionar la nave.
+─────────────────────────────────────────── */
+.ship-label{
+  display:flex;align-items:center;gap:var(--s4);
+  padding:var(--s4) var(--s6);border-bottom:1px solid var(--glass-border);
+  cursor:pointer;position:relative;transition:background var(--dur);
+}
+.ship-label:hover{background:var(--glass)}
+
+/* Nave seleccionada: fondo morado sutil y borde izquierdo morado */
+#ship-1:checked~.travel .ship-label[for="ship-1"],
+#ship-2:checked~.travel .ship-label[for="ship-2"],
+#ship-3:checked~.travel .ship-label[for="ship-3"]{
+  background:rgba(124,109,250,.08);border-left:3px solid var(--accent);
+}
+/* Nave 1 seleccionada por defecto con clase --d */
+.ship-label--d{background:rgba(124,109,250,.08);border-left:3px solid var(--accent)}
+/* Cuando se selecciona otra nave, la --d vuelve a su estado normal */
+#ship-2:checked~.travel .ship-label--d,
+#ship-3:checked~.travel .ship-label--d{
+  background:transparent;border-left:1px solid transparent;
+}
+
+/* Ícono de la nave: cuadrado redondeado con emoji grande */
+.ship-label__icon{
+  width:46px;height:46px;border-radius:var(--r-md);background:var(--bg-elevated);
+  border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;flex-shrink:0;
+}
+/* Bloque de texto: nombre y fecha de lanzamiento */
+.ship-label__info{flex:1}
+.ship-label__name{font-weight:700;font-size:var(--fz-md)}
+.ship-label__date{font-family:var(--font-mono);font-size:var(--fz-2xs);color:var(--text-1);margin-top:3px}
+/* Precio en cripto: fuente mono y tamaño grande */
+.ship-label__price{
+  display:flex;align-items:center;gap:6px;font-weight:700;
+  font-size:var(--fz-lg);font-family:var(--font-mono);
+}
+
+/* Ícono del símbolo de cripto (◈): círculo morado pequeño */
+.price-icon{
+  width:22px;height:22px;border-radius:var(--r-full);
+  background:linear-gradient(135deg,var(--accent),var(--accent-bright));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;color:#fff;font-weight:700;flex-shrink:0;
+}
+
+/* ── Radio personalizado ────────────────────
+   Círculo en la esquina derecha de cada nave.
+   Se rellena de morado cuando la nave está seleccionada.
+─────────────────────────────────────────── */
+.ship-label__radio{
+  position:absolute;top:50%;right:var(--s5);transform:translateY(-50%);
+  width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);
+  flex-shrink:0;transition:border-color var(--dur),background var(--dur);
+}
+/* Radio relleno cuando la nave está seleccionada */
+#ship-1:checked~.travel .ship-label[for="ship-1"] .ship-label__radio,
+#ship-2:checked~.travel .ship-label[for="ship-2"] .ship-label__radio,
+#ship-3:checked~.travel .ship-label[for="ship-3"] .ship-label__radio,
+.ship-label--d .ship-label__radio{border-color:var(--accent);background:var(--accent)}
+/* Radio vacío cuando otra nave está seleccionada */
+#ship-2:checked~.travel .ship-label--d .ship-label__radio,
+#ship-3:checked~.travel .ship-label--d .ship-label__radio{border-color:rgba(255,255,255,.2);background:transparent}
+
+/* Check (✓) dentro del radio: oculto por defecto */
+.ship-label__radio-check{
+  display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+}
+/* Check visible cuando la nave está seleccionada */
+#ship-1:checked~.travel .ship-label[for="ship-1"] .ship-label__radio-check,
+#ship-2:checked~.travel .ship-label[for="ship-2"] .ship-label__radio-check,
+#ship-3:checked~.travel .ship-label[for="ship-3"] .ship-label__radio-check,
+.ship-label--d .ship-label__radio-check{display:block}
+/* Check oculto cuando otra nave está seleccionada */
+#ship-2:checked~.travel .ship-label--d .ship-label__radio-check,
+#ship-3:checked~.travel .ship-label--d .ship-label__radio-check{display:none}
+
+/* ── Vista de detalle (sheet expandido) ─────
+   Se muestra cuando el usuario hace clic en el handle.
+─────────────────────────────────────────── */
+/* Emoji grande de la nave que flota y sirve de botón para colapsar */
+.detail-img{
+  font-size:5.5rem;text-align:center;padding:var(--s5) 0 var(--s2);
+  animation:float 3s ease-in-out infinite;cursor:pointer;
+}
+/* Cuerpo del detalle: nombre, precio y metadatos */
+.detail-body{padding:0 var(--s6) var(--s3)}
+/* Fila con nombre a la izquierda y precio a la derecha */
+.detail-row{display:flex;align-items:center;justify-content:space-between}
+/* Nombre de la nave en fuente display grande */
+.detail-name{font-family:var(--font-display);font-size:var(--fz-xl);font-weight:700;letter-spacing:.04em}
+/* Precio con símbolo de cripto */
+.detail-price{display:flex;align-items:center;gap:var(--s2);font-family:var(--font-mono);font-size:var(--fz-xl);font-weight:700}
+/* Líneas de metadatos: fecha, duración, ruta */
+.detail-meta{font-family:var(--font-mono);font-size:var(--fz-2xs);color:var(--text-1);margin-top:var(--s1);letter-spacing:.05em}
+
+/* ── Acciones del sheet ─────────────────────
+   Contiene el botón de wallet y el slider de confirmación.
+─────────────────────────────────────────── */
+.sheet-actions{
+  padding:var(--s4) var(--s6);display:flex;flex-direction:column;gap:var(--s3);
+  border-top:1px solid var(--glass-border);
+}
+
+/* Botón de conectar wallet: fila con texto a la izquierda y flecha a la derecha */
+.wallet-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:var(--s3) var(--s5);background:var(--glass);
+  border:1px solid var(--glass-border-bright);border-radius:var(--r-xl);
+  color:var(--text-0);font-weight:700;font-size:var(--fz-sm);
+  cursor:pointer;text-decoration:none;
+  transition:border-color var(--dur),background var(--dur),box-shadow var(--dur);
+}
+/* Al hover: borde morado y sombra de luz */
+.wallet-btn:hover{border-color:var(--accent);background:var(--accent-dim);box-shadow:0 0 20px var(--accent-glow)}
+/* Lado izquierdo del botón: ícono + texto */
+.wallet-btn__l{display:flex;align-items:center;gap:var(--s3)}
+
+/* ── Slider "desliza para confirmar" ────────
+   El input range es invisible y está encima de todo.
+   El thumb y la pista se mueven con JavaScript inline.
+─────────────────────────────────────────── */
+/* Contenedor del slider: fondo oscuro con borde sutil */
+.swipe-wrap{
+  position:relative;height:56px;background:var(--bg-elevated);
+  border:1px solid var(--glass-border);border-radius:var(--r-full);overflow:hidden;
+}
+/* Input range invisible: cubre todo el contenedor para capturar el arrastre */
+.swipe-wrap input[type="range"]{
+  position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:grab;z-index:4;margin:0;appearance:none;
+}
+.swipe-wrap input[type="range"]:active{cursor:grabbing}
+/* Pista de color que crece a medida que el usuario desliza */
+.swipe-track{
+  position:absolute;left:0;top:0;bottom:0;width:56px;
+  background:linear-gradient(90deg,rgba(124,109,250,.3),transparent);
+  border-radius:var(--r-full);pointer-events:none;z-index:1;
+}
+/* Pulgar circular morado con flecha: se mueve con JS */
+.swipe-thumb{
+  position:absolute;left:5px;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-bright));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 18px var(--accent-glow);z-index:2;pointer-events:none;
+  transition:left .08s linear,background .25s;
+}
+/* Texto del slider: desaparece al deslizar (JS cambia opacity a 0) */
+.swipe-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:var(--fz-xs);color:var(--text-2);letter-spacing:.06em;
+  text-transform:uppercase;padding-left:62px;pointer-events:none;z-index:3;transition:opacity .2s;
+}
+
+/* ── Responsive ─────────────────────────────
+   En móvil pequeño reduce el padding de las acciones y naves.
+─────────────────────────────────────────── */
+@media(max-width:480px){
+  .sheet-actions{padding:var(--s4) var(--s5)}
+  .ship-label{padding:var(--s4) var(--s4)}
+}
