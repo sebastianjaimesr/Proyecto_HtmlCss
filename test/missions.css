@@ -1,0 +1,26 @@
+.missions {padding:0 left; font-family:var(--font-mono);font-size:var(--fz-8xs);color:white;
+    letter-spacing:.15em;text-transform:uppercase;margin-bottom:var(--s5); } 
+.history-item {
+    display:flex;align-items:center;gap:var(--s4);padding:var(--s4) 0;
+    border-color: aliceblue;
+}
+.history-icon {
+    width:48px;height:48px;border-radius:var(--r-full);background:var(--bg-elevated);
+    border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;flex-shrink:0;
+    transition:box-shadow var(--dur),border-color var(--dur);
+}
+.history-info {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    flex:1;
+    font-weight:700;font-size:var(--fz-sm);
+    font-size:var(--fz-xs);color:var(--text-2);margin-top:2px;font-family:var(--font-mono);
+}
+.history-info p {
+    color: green;
+}
+.history-info p2 {
+    color: red;
+}
